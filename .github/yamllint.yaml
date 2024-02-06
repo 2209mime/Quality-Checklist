@@ -1,9 +1,6 @@
 rules:
   line-length:
     max: 120
-  key-ordering:
-    rules:
-      - order: increasing
-        type: scalar
-        path:
-          - kind
+  key-ordering: disable
+  indentation:
+    spaces: 2
