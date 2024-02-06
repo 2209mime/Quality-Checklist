@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "annotations": {
+          "type": "object",
+          "properties": {
+            "scenarios.ai.sap.com/description": {
+              "type": "string"
+            },
+            "scenarios.ai.sap.com/name": {
+              "type": "string"
+            },
+            "executables.ai.sap.com/description": {
+              "type": "string"
+            },
+            "executables.ai.sap.com/name": {
+              "type": "string"
+            }
+          }
+        },
+        "labels": {
+          "type": "object",
+          "properties": {
+            "scenarios.ai.sap.com/id": {
+              "type": "string"
+            },
+            "executables.ai.sap.com/id": {
+              "type": "string"
+            },
+            "ai.sap.com/version": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": ["name"]
+    },
+    "spec": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "type": "object",
+          "properties": {
+            "apiVersion": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "annotations": {
+                  "type": "string"
+                },
+                "labels": {
+                  "type": "string"
+                }
+              }
+            },
+            "spec": {
+              "type": "object",
+              "properties": {
+                "predictor": {
+                  "type": "object",
+                  "properties": {
+                    "imagePullSecrets": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["name"]
+                      }
+                    },
+                    "minReplicas": {
+                      "type": "integer"
+                    },
+                    "maxReplicas": {
+                      "type": "integer"
+                    },
+                    "containers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "image": {
+                            "type": "string"
+                          },
+                          "ports": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "containerPort": {
+                                  "type": "integer"
+                                },
+                                "protocol": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["containerPort", "protocol"]
+                            }
+                          }
+                        },
+                        "required": ["name", "image", "ports"]
+                      }
+                    }
+                  },
+                  "required": ["imagePullSecrets", "minReplicas", "maxReplicas", "containers"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["apiVersion", "kind", "metadata", "spec"]
+}
