@@ -2,8 +2,7 @@ name: YAML Lint Check
 
 on:
   pull_request:
-    branches: ["main"]
-    # Modify this to match your branch name
+    branches: ["main"]  # Modify this to match your branch name
 
 jobs:
   lint:
@@ -22,6 +21,7 @@ jobs:
         run: |
           yamllint -c .github/yamllint.yaml .github/yamllint.yaml
         # Replace 'your-yaml-file.yaml' with the actual path to your YAML file.
+
       - name: Install jsonlint
         run: |
           npm install -g jsonlint
@@ -30,5 +30,14 @@ jobs:
       - name: Validate YAML against JSON Schema
         run: |
           jsonlint -q -c .github/schema.yaml .github/yamllint.yaml
-        continue-on-error: true  
-         
+        continue-on-error: true
+
+      - name: Set status check
+        run: |
+          # Perform checks or validations
+          if checks_passed; then
+            echo "::set-output name=check_status::success"
+          else
+            echo "::set-output name=check_status::failure"
+          fi
+          id: set_status
