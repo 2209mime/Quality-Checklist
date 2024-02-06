@@ -29,6 +29,6 @@ jobs:
 
       - name: Validate YAML against JSON Schema
         run: |
-          jsonlint -q -c .github/yamllint.schema.yaml .github/yamllint.yaml
+          jsonlint -q -c .github/schema.yaml .github/yamllint.yaml
         continue-on-error: true  
          
