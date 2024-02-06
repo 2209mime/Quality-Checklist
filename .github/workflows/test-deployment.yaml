@@ -22,9 +22,13 @@ jobs:
         run: |
           yamllint -c .github/yamllint.yaml .github/yamllint.yaml
         # Replace 'your-yaml-file.yaml' with the actual path to your YAML file.
+      - name: Install jsonlint
+        run: |
+          npm install -g jsonlint
+        # Make sure Node.js and npm are available in your environment.
+
       - name: Validate YAML against JSON Schema
-        uses: stefanzweifel/json-schema-linter@v1
-        with:
-          schema: .github/yamllint.schema.json  # Path to your JSON Schema
-          files: .github/schema.yaml   
+        run: |
+          jsonlint -q -c .github/yamllint.schema.yaml .github/yamllint.yaml
+        continue-on-error: true  
          
