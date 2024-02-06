@@ -1,9 +1,9 @@
 name: YAML Lint Check
 
 on:
-  push:
-    branches:
-      - main  # Modify this to match your branch name
+  pull_request:
+    branches: ["main"]
+    # Modify this to match your branch name
 
 jobs:
   lint:
