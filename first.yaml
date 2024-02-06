@@ -26,7 +26,7 @@ spec:
         imagePullSecrets:
           - name: sampleservingdockerimage
         minReplicas: 1
-        maxReplicas: 5
+        maxReplicas: 10
         containers:
         - name: kfserving-container
           image: "ies-aicoe.common.repositories.cloud.sap/aifpoc/sample-serve:01"
