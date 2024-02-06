@@ -1,0 +1,24 @@
+name: YAML Lint Check
+
+on:
+  push:
+    branches:
+      - main  # Modify this to match your branch name
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install yamllint
+        run: |
+          pip install yamllint
+        # Make sure Python and pip are available in your environment.
+
+      - name: Run yamllint
+        run: |
+          yamllint -c .yamllint your-yaml-file.yaml
+        # Replace 'your-yaml-file.yaml' with the actual path to your YAML file.
