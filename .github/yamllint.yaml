@@ -1,6 +1,5 @@
 rules:
   line-length:
     max: 120
-  key-ordering: disable
   indentation:
     spaces: 2
