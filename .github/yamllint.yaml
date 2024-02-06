@@ -1,0 +1,8 @@
+rules:
+  line-length:
+    max: 120
+  key-ordering:
+    - expected: kind
+      case-sensitive: true
+  indentation:
+    spaces: 2
