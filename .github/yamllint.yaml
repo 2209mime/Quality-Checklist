@@ -2,5 +2,8 @@ rules:
   line-length:
     max: 120
   key-ordering:
-    - case_sensitive: true
-      major:  kind
+    rules:
+      - order: increasing
+        type: scalar
+        path:
+          - kind
