@@ -20,5 +20,5 @@ jobs:
 
       - name: Run yamllint
         run: |
-          yamllint -c .yamllint your-yaml-file.yaml
+          yamllint -c .yamllint yamllint.yaml
         # Replace 'your-yaml-file.yaml' with the actual path to your YAML file.
